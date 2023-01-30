@@ -1,6 +1,6 @@
 import React from "react";
-import Layout from "./components/layout";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
+import Layout from "./layout";
 import { theme, breakSm } from "./theme";
 
 const GlobalStyle = createGlobalStyle`
@@ -9,10 +9,10 @@ const GlobalStyle = createGlobalStyle`
   margin: 0;
   padding: 0;
   border: none;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Poppins, Arial, Helvetica, sans-serif;
   font-size: 12px;
   @media only screen and (min-width: ${breakSm}px) {
-    font-size: 14px;
+    font-size: 18px;
   }
  }
 `;
