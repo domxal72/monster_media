@@ -9,6 +9,7 @@ const IconButtonWrapper = styled.div`
   height: 44px;
   border-radius: 50%;
   background: #52ac38;
+  cursor: pointer;
 `;
 
 export default function IconButton({ svgIcon }) {

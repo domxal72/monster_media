@@ -1,18 +1,21 @@
 import React from "react";
 import styled from "styled-components";
 import LogoIcon from "../icons/logo";
-import { theme } from "../theme";
+import { theme, breakSm } from "../theme";
+import { ContentWrapper } from "./content-wrapper";
 import Text, { InlineText } from "./text";
 
 const FooterWrapper = styled.div`
   border-top: 1px solid ${theme.colors.grey};
 `;
 
-const MaxWidth = styled.div`
-  margin: auto;
-  max-width: ${theme.width.pageWidth};
-  display: flex;
+const FooterContent = styled(ContentWrapper)`
   justify-content: space-between;
+  flex-direction: column;
+  padding: 15px 25px;
+  @media only screen and (min-width: ${breakSm}px) {
+    flex-direction: row;
+  }
 `;
 
 const Left = styled.div`
@@ -28,22 +31,27 @@ const Right = styled.div`
 export default function Footer() {
   return (
     <FooterWrapper>
-      <MaxWidth>
+      <FooterContent>
         <Left>
-          <Text size={14}>
+          <Text size={14} sizeSm={14}>
             © 2022{" "}
-            <InlineText bold size={14}>
+            <InlineText bold size={14} sizeSm={14}>
               Organic.
             </InlineText>{" "}
             Všechna práva vyhrazena.
           </Text>
         </Left>
         <Right>
-          <Text size={14}>Created by </Text>
+          <Text size={14} sizeSm={14}>
+            Created by{" "}
+          </Text>
           <LogoIcon />
-          <Text size={14}> Monster Media</Text>
+          <Text size={14} sizeSm={14}>
+            {" "}
+            Monster Media
+          </Text>
         </Right>
-      </MaxWidth>
+      </FooterContent>
     </FooterWrapper>
   );
 }

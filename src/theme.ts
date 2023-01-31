@@ -8,7 +8,7 @@ export const theme ={
     lightGreen: '#52AC38',
   },
   breakpoints: {
-    sm: 860
+    sm: 920
   },
   width: {
     pageWidth: 1420
