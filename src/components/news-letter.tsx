@@ -56,8 +56,10 @@ const Form = styled.div`
 `;
 
 const LetterImg = styled.img`
+  max-width: 225px;
   @media only screen and (min-width: ${breakSm}px) {
     align-items: flex-start;
+    max-width: none;
   }
 `;
 
