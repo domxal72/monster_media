@@ -12,6 +12,8 @@ import BurgerNavIcon from "../icons/burger-nav";
 import ArrowIcon from "../icons/arrow";
 import { ContentWrapper } from "./content-wrapper";
 
+const { grey, white } = theme.colors;
+
 const HeaderWrapper = styled.div`
   position: fixed;
   width: 100%;
@@ -19,20 +21,23 @@ const HeaderWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 30px;
-  border-bottom: 1px solid ${theme.colors.grey};
-  background: ${theme.colors.white};
+  padding: 0 25px;
+  border-bottom: 1px solid ${grey};
+  background: ${white};
   z-index: 1;
+  @media only screen and (min-width: ${breakSm}px) {
+    padding: 0 30px;
+  }
 `;
 
-const NavBar = styled(ContentWrapper)`
-  display: none;
+const Logo = styled.div`
+  display: flex;
   align-items: center;
-  width: 100%;
-  gap: 50px;
   order: 2;
   @media only screen and (min-width: ${breakSm}px) {
-    display: flex;
+    flex: 1;
+    order: 1;
+    padding-right: 10px;
   }
 `;
 
@@ -46,11 +51,22 @@ const MobileNavBar = styled.div`
   }
 `;
 
+const NavBar = styled(ContentWrapper)`
+  display: none;
+  align-items: center;
+  width: 100%;
+  gap: 60px;
+  order: 2;
+  @media only screen and (min-width: ${breakSm}px) {
+    display: flex;
+  }
+`;
+
 const NavContainer = styled.div`
   position: absolute;
   width: max-content;
-  border: 1px solid ${theme.colors.grey};
-  background: ${theme.colors.white};
+  border: 1px solid ${grey};
+  background: ${white};
   top: initial;
   left: 0;
   display: ${(props) => (props.isHidden ? "none" : "block")};
@@ -63,15 +79,16 @@ const NavContainer = styled.div`
 const NavItem = styled.div`
   display: flex;
   align-items: center;
-  padding: 5px 10px;
   gap: 5px;
+  padding: 5px 10px;
   cursor: pointer;
-  border-bottom: 1px solid ${theme.colors.grey};
+  border-bottom: 1px solid ${grey};
   :last-child {
     border-bottom: none;
   }
   @media only screen and (min-width: ${breakSm}px) {
     border-bottom: none;
+    padding: 0;
   }
 `;
 
@@ -86,16 +103,11 @@ const BurgerNav = styled.div`
 const Icons = styled.div`
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   gap: 15px;
   order: 3;
-`;
-
-const Logo = styled.div`
-  display: flex;
-  align-items: center;
-  order: 2;
   @media only screen and (min-width: ${breakSm}px) {
-    order: 1;
+    flex: 1;
   }
 `;
 

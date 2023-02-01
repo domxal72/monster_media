@@ -6,19 +6,27 @@ import Button from "./button";
 import Letters from "../img/letters.png";
 import { ContentWrapper } from "./content-wrapper";
 
+const { lightGrey, green, black } = theme.colors;
+
+const NewsLetterContainer = styled(ContentWrapper)`
+  max-width: calc(${theme.width.pageWidth}px - 20px);
+  padding: 0;
+`;
+
 const NewsLetterWrapper = styled.div`
-  background: ${theme.colors.lightGrey};
+  background: ${lightGrey};
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border-radius: 5px;
   flex: 1;
   padding: 30px 25px;
   @media only screen and (min-width: ${breakSm}px) {
     flex-direction: row;
+    align-items: flex-end;
     padding: 44px 90px;
     gap: 90px;
-    margin: 90px 0 120px;
   }
 `;
 
@@ -31,6 +39,7 @@ const InlineTextContainer = styled.div`
   padding: 32px 0;
   @media only screen and (min-width: ${breakSm}px) {
     max-width: 400px;
+    padding: 32px 0 16px;
   }
 `;
 
@@ -39,20 +48,21 @@ const Form = styled.div`
   gap: 22px;
   width: 100%;
   justify-content: center;
+  margin-top: 30px;
   @media only screen and (min-width: ${breakSm}px) {
     gap: 50px;
+    margin-top: 45px;
   }
 `;
 
 const LetterImg = styled.img`
-  // max-width: 100%;
   @media only screen and (min-width: ${breakSm}px) {
     align-items: flex-start;
   }
 `;
 
 const Input = styled.input`
-  border-bottom: 1px solid ${() => theme.colors.green};
+  border-bottom: 1px solid ${() => green};
   font-size: 18px;
   background: transparent;
   width: 100%;
@@ -61,7 +71,7 @@ const Input = styled.input`
     max-width: 520px;
   }
   ::placeholder {
-    color: ${theme.colors.black};
+    color: ${black};
     font-size: 18px;
   }
   :focus-visible {
@@ -80,14 +90,14 @@ const FormContainer = styled.div`
 
 export default function NewsLetter() {
   return (
-    <ContentWrapper>
+    <NewsLetterContainer>
       <NewsLetterWrapper>
         <LettersContainer>
           <LetterImg src={Letters} alt='' />
         </LettersContainer>
         <FormContainer>
           <InlineTextContainer>
-            <Text bold color={theme.colors.green} alignSm='center'>
+            <Text bold color={green} alignSm='center'>
               Nenechte si ujít <InlineText>novinky do emailu</InlineText> a k
               první objednávce{" "}
               <InlineText>dostanete od nás malý dárek</InlineText>.
@@ -103,6 +113,6 @@ export default function NewsLetter() {
           </Form>
         </FormContainer>
       </NewsLetterWrapper>
-    </ContentWrapper>
+    </NewsLetterContainer>
   );
 }

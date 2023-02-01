@@ -7,6 +7,10 @@ import Text, { InlineText } from "./text";
 
 const FooterWrapper = styled.div`
   border-top: 1px solid ${theme.colors.grey};
+  margin-top: 64px;
+  @media only screen and (min-width: ${breakSm}px) {
+    margin-top: 128px;
+  }
 `;
 
 const FooterContent = styled(ContentWrapper)`
@@ -15,6 +19,7 @@ const FooterContent = styled(ContentWrapper)`
   padding: 15px 25px;
   @media only screen and (min-width: ${breakSm}px) {
     flex-direction: row;
+    padding: 15px 10px;
   }
 `;
 

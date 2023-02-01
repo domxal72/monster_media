@@ -11,7 +11,7 @@ export const theme ={
     sm: 920
   },
   width: {
-    pageWidth: 1420
+    pageWidth: 1440
   }
 }
 

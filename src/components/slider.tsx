@@ -8,9 +8,11 @@ import Img2 from "../img/slider2.png";
 import Img3 from "../img/slider3.png";
 import { ContentWrapper } from "./content-wrapper";
 
-const OuterWrapper = styled.div`
+const { grey, lightGrey, white } = theme.colors;
+
+const OuterWrapper = styled(ContentWrapper)`
   overflow-x: auto;
-  scrollbar-color: ${theme.colors.grey} ${theme.colors.lightGrey};
+  scrollbar-color: ${grey} ${lightGrey};
   scrollbar-width: thin;
   -ms-overflow-style: none;
   ::-webkit-scrollbar {
@@ -23,11 +25,11 @@ const OuterWrapper = styled.div`
 
   ::-webkit-scrollbar-thumb {
     height: 5px;
-    background-color: ${theme.colors.grey};
+    background-color: ${grey};
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background-color: ${theme.colors.lightGrey};
+    background-color: ${lightGrey};
   }
 
   ::-webkit-scrollbar:vertical {
@@ -37,7 +39,6 @@ const OuterWrapper = styled.div`
 
 const InnerWrapper = styled.div`
   display: flex;
-  padding-bottom: 5px;
   gap: 15px;
   @media only screen and (min-width: ${breakSm}px) {
     gap: 30px;
@@ -70,35 +71,46 @@ const SliderItem = styled.div`
 const Description = styled.div`
   margin: 30px;
   border-radius: 5px;
-  background: ${theme.colors.white};
-  padding: 20px 50px;
+  background: ${white};
+  padding: 10px 20px;
+  @media only screen and (min-width: ${breakSm}px) {
+    padding: 20px 50px;
+  }
 `;
+
+const slidesData = [
+  {
+    text: "Lorem ipsum dolor sit amet",
+    img: Img1,
+  },
+  {
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam tortor quam, semper nec urna at, auctor sodales nulla.",
+    img: Img2,
+  },
+  {
+    text: "Lorem ipsum dolor sit amet",
+    img: Img3,
+  },
+];
+
+function Sliders() {
+  return slidesData.map(({ text, img }) => (
+    <SliderItem img={img}>
+      <Description>
+        <Text align='center' sizeSm={12}>
+          {text}
+        </Text>
+      </Description>
+    </SliderItem>
+  ));
+}
 
 export default function Slider() {
   return (
-    <ContentWrapper>
-      <OuterWrapper>
-        <InnerWrapper>
-          <SliderItem img={Img1}>
-            <Description>
-              <Text align='center'>Lorem ipsum dolor sit amet</Text>
-            </Description>
-          </SliderItem>
-          <SliderItem img={Img2}>
-            <Description>
-              <Text align='center'>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-                tortor quam, semper nec urna at, auctor sodales nulla.
-              </Text>
-            </Description>
-          </SliderItem>
-          <SliderItem img={Img3}>
-            <Description>
-              <Text align='center'>Lorem ipsum dolor sit amet</Text>
-            </Description>
-          </SliderItem>
-        </InnerWrapper>
-      </OuterWrapper>
-    </ContentWrapper>
+    <OuterWrapper>
+      <InnerWrapper>
+        <Sliders />
+      </InnerWrapper>
+    </OuterWrapper>
   );
 }

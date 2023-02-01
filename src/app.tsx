@@ -1,7 +1,9 @@
 import React from "react";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
-import Layout from "./layout";
 import { theme, breakSm } from "./theme";
+import Footer from "./components/footer";
+import Header from "./components/header";
+import Main from "./components/main";
 
 const GlobalStyle = createGlobalStyle`
 * {
@@ -22,7 +24,9 @@ export default function App() {
     <React.StrictMode>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
-        <Layout />
+        <Header />
+        <Main />
+        <Footer />
       </ThemeProvider>
     </React.StrictMode>
   );
